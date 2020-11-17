@@ -1,6 +1,7 @@
 package com.example.exception.intercept;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -11,6 +12,8 @@ import java.lang.reflect.Method;
  * @Description:
  */
 @Component
+//让ExceptionProcessor在ExceptionConfig之后加载，保证exceptionMethodPool有值
+@DependsOn("exceptionConfig")
 public class ExceptionProcessor {
     @Autowired
     private ExceptionMethodPool exceptionMethodPool;
